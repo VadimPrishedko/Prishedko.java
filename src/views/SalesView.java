@@ -17,6 +17,14 @@ public class SalesView {
     // который в параметре содержит переменную типа модели.
 
 
+    public SalesView(String title, String name, int quantity, double price, Scanner scanner) {
+        this.title = title;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.scanner = scanner;
+    }
+
     public void getInputs() {
 
         scanner = new Scanner(System.in);
