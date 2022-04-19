@@ -14,6 +14,8 @@ public class Product {
     // здесь ...
 final double TAXRATE = 5.0;
 
+
+
     // Обеспечьте доступ к полям модели через getters и setters
     // здесь ...
 
