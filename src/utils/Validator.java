@@ -2,10 +2,8 @@ package utils;
 
 import java.util.Scanner;
 
-// Валидатор ввода значений
 public class Validator {
 
-    // Валидация ввода наименования
     public static String validateName(Scanner scanner){
         String str = scanner.nextLine().trim();
         while (str.isEmpty()) {
@@ -15,7 +13,6 @@ public class Validator {
         return str;
     }
 
-    // Валидация ввода количества
     public static int validateQuantityInput(Scanner scanner){
         while (!scanner.hasNextInt()) {
             String str = scanner.nextLine().trim();
@@ -35,7 +32,6 @@ public class Validator {
         return quantity;
     }
 
-    // Валидация ввода цены
     public static float validatePriceInput(Scanner scanner){
         while (!scanner.hasNextFloat()) {
             String str = scanner.nextLine().trim();
@@ -45,7 +41,7 @@ public class Validator {
         float price = scanner.nextFloat();
         while (price <= 0) {
             System.out.println("Неверное значение! Введите цену: ");
-            // здесь, реализуйте уведомление о неверном формате
+            System.out.println("Цена должна бить больше чем 0 и через запятую");
             price = scanner.nextFloat();
         }
         return price;

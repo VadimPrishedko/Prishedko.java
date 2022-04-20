@@ -1,15 +1,16 @@
 package controllers;
 
+import mapper.ProductMapper;
 import models.Product;
+import models.ProductDto;
+import utils.Rounder;
 import views.SalesView;
 
-// Controller
 public class ProductController {
 
     Product model;
     SalesView view;
 
-    // Конструктор
     public ProductController(Product model, SalesView view) {
         this.model = model;
         this.view = view;
@@ -18,20 +19,18 @@ public class ProductController {
     public void runApp() {
 
         view.getInputs();
+        ProductDto productDto = view.getProductDto();
+        ProductMapper.dtoToModel(productDto, model);
 
-        // Здесь, реализуйте:
-        // 1) получение имени товара через модель;
-   String name = model.getName();
-        System.out.println(name);
-        // 2) вызов методов расчетов доходов и налога;
-//        double beforeTaxes = m
-        // 3) округление расчетных значений;
-        // 4) вывод расчетов по заданному формату.
+        String name = model.getName();
+        double beforeTaxes = model.beforeTaxes();
+        double taxes = model.taxes();
+        double profit = model.profit();
 
-        String output = "Наименование товара: Апельсины\n" +
-                "Общий доход (грн.): 95,88\n" +
-                "Сумма налога (грн.): 4,79\n" +
-                "Чистый доход (грн.): 91,09";
+        String output = "Наименование товара: " + name + "\n" +
+                "Общий доход (грн.): " + Rounder.rounding(beforeTaxes) + "\n" +
+                "Сумма налога (грн.): " + Rounder.rounding(taxes) + "\n" +
+                "Чистый доход (грн.): " + Rounder.rounding(profit);
 
         view.getOutput(output);
     }
