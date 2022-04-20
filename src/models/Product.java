@@ -1,10 +1,12 @@
 package models;
 
 
+import base.Fiscal;
+import base.Income;
 
 // Model.
 // Примените интерфейсы Income, Fiscal, переопределите их методы.
-public class Product {
+public class Product implements Income, Fiscal {
 
     // Объявление полей модели
     private String name;
@@ -49,13 +51,26 @@ final double TAXRATE = 5.0;
 
 
     // Переопределите методы реализуемых интерфейсов.
-
+public Income income;
+    public Fiscal fiscal;
     // Расчёт дохода от продаж, до уплаты налога.
     // здесь ...
 
+    public double beforeTaxes(){
+        return quantity * price;
+    }
+
+
     // Расчёт суммы налога с продаж.
     // здесь ...
+public double taxes(){
+        return beforeTaxes() /100 * TAXRATE;
+}
 
     // Расчёт чистого дохода, после уплаты налога.
     // здесь ...
+public double profit(){
+        return beforeTaxes() - taxes();
+}
+
 }

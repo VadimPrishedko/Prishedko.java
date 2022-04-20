@@ -21,8 +21,10 @@ public class ProductController {
 
         // Здесь, реализуйте:
         // 1) получение имени товара через модель;
-
+   String name = model.getName();
+        System.out.println(name);
         // 2) вызов методов расчетов доходов и налога;
+//        double beforeTaxes = m
         // 3) округление расчетных значений;
         // 4) вывод расчетов по заданному формату.
 
